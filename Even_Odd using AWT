@@ -1,0 +1,60 @@
+import java.awt.*;
+import java.awt.event.*;
+
+class Q6_EvenOdd implements ActionListener {
+
+    Frame f;
+    TextField t;
+    Label l;
+    Button b;
+
+    Q6_EvenOdd() {
+
+        f = new Frame("Even Odd Checker");
+
+        t = new TextField();
+        t.setBounds(50, 80, 150, 30);
+
+        b = new Button("Check");
+        b.setBounds(220, 80, 60, 30);
+
+        l = new Label();
+        l.setBounds(50, 130, 200, 30);
+
+        b.addActionListener(this);
+
+        //  Frame close code
+        f.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                f.dispose();
+            }
+        });
+
+        f.add(t);
+        f.add(b);
+        f.add(l);
+
+        f.setSize(350, 250);
+        f.setLayout(null);
+        f.setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+
+        try {
+            int num = Integer.parseInt(t.getText());
+
+            if (num % 2 == 0)
+                l.setText("Even Number");
+            else
+                l.setText("Odd Number");
+
+        } catch (Exception ex) {
+            l.setText("Enter valid number");
+        }
+    }
+
+    public static void main(String[] args) {
+        new Q6_EvenOdd();
+    }
+}
